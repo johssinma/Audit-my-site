@@ -26,7 +26,7 @@ else
     # Exécution via curl | bash — besoin de cloner
     echo -e "${YELLOW}Installation distante — clonage du dépôt...${NC}"
     TEMP_DIR=$(mktemp -d)
-    git clone --depth 1 https://github.com/johssinma/test_marketing.git "$TEMP_DIR/claude-mark2" 2>/dev/null
+    git clone --depth 1 https://github.com/johssinma/audit-my-site.git "$TEMP_DIR/claude-mark2" 2>/dev/null
     if [ $? -ne 0 ]; then
         echo -e "${RED}Échec du clonage du dépôt.${NC}"
         exit 1

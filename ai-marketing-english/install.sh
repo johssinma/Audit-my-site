@@ -26,7 +26,7 @@ if [ -n "$BASH_SOURCE" ] && [ "$BASH_SOURCE" != "bash" ] && [ -f "$BASH_SOURCE" 
 else
     echo -e "${YELLOW}Remote install — cloning repository...${NC}"
     TEMP_DIR=$(mktemp -d)
-    git clone --depth 1 https://github.com/johssinma/test_marketing.git "$TEMP_DIR/audit-my-site" 2>/dev/null
+    git clone --depth 1 https://github.com/johssinma/audit-my-site.git "$TEMP_DIR/audit-my-site" 2>/dev/null
     if [ $? -ne 0 ]; then
         echo -e "${RED}Failed to clone repository.${NC}"
         exit 1
