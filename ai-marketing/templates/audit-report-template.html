@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Audit My Site — Marketing Report</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=DM+Mono:wght@400;500&family=Nunito:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0f1117;
+  --bg2: #161b26;
+  --bg3: #1e2535;
+  --surface: #1a2030;
+  --surface2: #222840;
+  --border: rgba(255,255,255,0.07);
+  --border2: rgba(255,255,255,0.12);
+  --blue: #2d8bff;
+  --blue-dim: #1a5fcc;
+  --blue-glow: rgba(45,139,255,0.15);
+  --blue-light: #6db3ff;
+  --text: #e8ecf5;
+  --muted: #7a8499;
+  --dim: #3a4155;
+  --gold: #f0b429;
+  --green: #22d38a;
+  --red: #ff5757;
+  --amber: #ffab2e;
+  --font-head: 'Montserrat', sans-serif;
+  --font-mono: 'DM Mono', monospace;
+  --font-body: 'Nunito', sans-serif;
+  --radius: 12px;
+  --radius-lg: 20px;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg: #f0f2f8;
+    --bg2: #e8ecf5;
+    --bg3: #dde3f0;
+    --surface: #ffffff;
+    --surface2: #f5f7fc;
+    --border: rgba(0,0,0,0.07);
+    --border2: rgba(0,0,0,0.12);
+    --blue: #1a6fd8;
+    --blue-dim: #1254b0;
+    --blue-glow: rgba(26,111,216,0.1);
+    --blue-light: #1a6fd8;
+    --text: #0f1117;
+    --muted: #5a6478;
+    --dim: #c0c8d8;
+    --gold: #c8920a;
+    --green: #14a86a;
+    --red: #d93535;
+    --amber: #d4840a;
+  }
+}
+
+*,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  letter-spacing: 0.01em;
+}
+
+/* ── LAYOUT ── */
+.container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+/* ── TOPBAR ── */
+.topbar {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(15,17,23,0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  padding: 12px 24px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+@media (prefers-color-scheme: light) {
+  .topbar { background: rgba(240,242,248,0.9); }
+}
+.topbar-brand {
+  font-family: var(--font-head);
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--blue);
+  letter-spacing: 0em;
+  display: flex; align-items: center; gap: 8px;
+}
+.topbar-brand::before {
+  content: '';
+  width: 8px; height: 8px;
+  background: var(--blue);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--blue);
+}
+.topbar-actions { display: flex; align-items: center; gap: 10px; }
+.lang-toggle {
+  display: flex; background: var(--bg3); border-radius: 8px;
+  border: 1px solid var(--border); overflow: hidden;
+}
+.lang-btn {
+  padding: 5px 12px; font-family: var(--font-mono); font-size: 11px;
+  font-weight: 500; cursor: pointer; border: none; background: transparent;
+  color: var(--muted); transition: all 0.2s; letter-spacing: 0.05em;
+}
+.lang-btn.active { background: var(--blue); color: #fff; }
+.print-btn {
+  padding: 6px 14px; font-family: var(--font-mono); font-size: 11px;
+  font-weight: 500; cursor: pointer; border: 1px solid var(--border2);
+  background: transparent; color: var(--muted); border-radius: 8px;
+  transition: all 0.2s; letter-spacing: 0.05em;
+}
+.print-btn:hover { border-color: var(--blue); color: var(--blue); }
+
+/* ── HERO ── */
+.hero {
+  padding: 80px 24px 60px;
+  position: relative; overflow: hidden;
+  background: linear-gradient(160deg, var(--bg2) 0%, var(--bg) 60%);
+}
+.hero::before {
+  content: '';
+  position: absolute; top: -120px; right: -80px;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(45,139,255,0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero::after {
+  content: '';
+  position: absolute; bottom: 0; left: 0; right: 0;
+  height: 1px; background: linear-gradient(90deg, transparent, var(--blue-dim), transparent);
+}
+.hero-inner { max-width: 960px; margin: 0 auto; }
+.hero-meta {
+  display: flex; align-items: center; gap: 8px;
+  font-family: var(--font-mono); font-size: 11px;
+  color: var(--blue); letter-spacing: 0.12em; text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.hero-meta::before {
+  content: '';
+  width: 24px; height: 1px; background: var(--blue);
+}
+.hero-grid {
+  display: grid; grid-template-columns: 1fr auto;
+  gap: 40px; align-items: center;
+}
+@media (max-width: 640px) { .hero-grid { grid-template-columns: 1fr; } }
+.hero-title {
+  font-family: var(--font-head);
+  font-size: clamp(26px, 5vw, 48px);
+  font-weight: 900; line-height: 1.08;
+  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+}
+.hero-title span { color: var(--blue); }
+.hero-url {
+  font-family: var(--font-mono); font-size: 13px;
+  color: var(--muted); margin-bottom: 20px;
+  display: flex; align-items: center; gap: 8px;
+}
+.hero-url::before {
+  content: '→';
+  color: var(--blue); font-size: 12px;
+}
+.hero-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.tag {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 4px 12px; border-radius: 6px;
+  font-family: var(--font-mono); font-size: 11px; font-weight: 500;
+  letter-spacing: 0.05em; text-transform: uppercase; border: 1px solid;
+}
+.tag-blue { background: var(--blue-glow); color: var(--blue-light); border-color: rgba(45,139,255,0.25); }
+.tag-green { background: rgba(34,211,138,0.1); color: var(--green); border-color: rgba(34,211,138,0.25); }
+.tag-amber { background: rgba(255,171,46,0.1); color: var(--amber); border-color: rgba(255,171,46,0.25); }
+
+/* ── SCORE CIRCLE ── */
+.score-circle-wrap { text-align: center; flex-shrink: 0; }
+.score-circle {
+  width: 140px; height: 140px;
+  position: relative; display: inline-block;
+}
+.score-circle svg { transform: rotate(-90deg); }
+.score-circle-bg { fill: none; stroke: var(--bg3); stroke-width: 8; }
+.score-circle-fill {
+  fill: none; stroke: var(--blue); stroke-width: 8;
+  stroke-linecap: round;
+  stroke-dasharray: 339.3;
+  stroke-dashoffset: 339.3;
+  transition: stroke-dashoffset 1.5s cubic-bezier(0.4,0,0.2,1);
+  filter: drop-shadow(0 0 8px rgba(45,139,255,0.6));
+}
+.score-circle-val {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+}
+.score-num {
+  font-family: var(--font-head); font-size: 36px;
+  font-weight: 900; line-height: 1; color: var(--text);
+  letter-spacing: -0.03em;
+}
+.score-den { font-family: var(--font-mono); font-size: 12px; color: var(--muted); }
+.score-grade {
+  margin-top: 8px;
+  font-family: var(--font-head); font-size: 20px; font-weight: 800;
+  padding: 2px 16px; border-radius: 8px;
+  background: var(--blue-glow); color: var(--blue);
+  border: 1px solid rgba(45,139,255,0.3);
+  letter-spacing: -0.01em;
+}
+
+/* ── SECTIONS ── */
+section { padding: 48px 24px; }
+section + section { border-top: 1px solid var(--border); }
+.section-label {
+  font-family: var(--font-mono); font-size: 11px;
+  color: var(--blue); letter-spacing: 0.15em; text-transform: uppercase;
+  margin-bottom: 8px;
+  display: flex; align-items: center; gap: 8px;
+}
+.section-label::after { content: ''; flex: 1; height: 1px; background: var(--border2); }
+.section-title {
+  font-family: var(--font-head); font-size: clamp(19px, 3vw, 26px);
+  font-weight: 800; letter-spacing: -0.02em;
+  margin-bottom: 28px; line-height: 1.2;
+}
+
+/* ── SCORE BARS ── */
+.score-grid { display: flex; flex-direction: column; gap: 16px; }
+.score-item { display: grid; grid-template-columns: 200px 1fr 60px; gap: 16px; align-items: center; }
+@media (max-width: 640px) { .score-item { grid-template-columns: 1fr; gap: 6px; } }
+.score-item-name { font-size: 14px; font-weight: 600; color: var(--text); }
+.score-item-sub { font-size: 12px; color: var(--muted); margin-top: 2px; line-height: 1.4; }
+.bar-track {
+  height: 8px; background: var(--bg3);
+  border-radius: 4px; overflow: visible; position: relative;
+}
+.bar-fill {
+  height: 100%; border-radius: 4px;
+  background: linear-gradient(90deg, var(--blue-dim), var(--blue));
+  box-shadow: 0 0 10px rgba(45,139,255,0.4);
+  width: 0; transition: width 1.2s cubic-bezier(0.4,0,0.2,1);
+  position: relative;
+}
+.bar-fill::after {
+  content: '';
+  position: absolute; right: -1px; top: 50%;
+  transform: translateY(-50%);
+  width: 14px; height: 14px; border-radius: 50%;
+  background: var(--blue);
+  box-shadow: 0 0 8px rgba(45,139,255,0.8);
+}
+.bar-fill.green { background: linear-gradient(90deg, #14a86a, #22d38a); box-shadow: 0 0 10px rgba(34,211,138,0.4); }
+.bar-fill.green::after { background: var(--green); box-shadow: 0 0 8px rgba(34,211,138,0.8); }
+.bar-fill.amber { background: linear-gradient(90deg, #d4840a, #ffab2e); box-shadow: 0 0 10px rgba(255,171,46,0.4); }
+.bar-fill.amber::after { background: var(--amber); box-shadow: 0 0 8px rgba(255,171,46,0.8); }
+.bar-fill.red { background: linear-gradient(90deg, #a33232, #ff5757); box-shadow: 0 0 10px rgba(255,87,87,0.4); }
+.bar-fill.red::after { background: var(--red); box-shadow: 0 0 8px rgba(255,87,87,0.8); }
+.score-val {
+  font-family: var(--font-mono); font-size: 14px; font-weight: 500;
+  color: var(--text); text-align: right;
+}
+
+/* ── CARDS GRID ── */
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  position: relative; overflow: hidden;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.card:hover { border-color: var(--border2); transform: translateY(-2px); }
+.card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: var(--blue);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 0.3s;
+}
+.card:hover::before { transform: scaleX(1); }
+.card-icon {
+  width: 40px; height: 40px; border-radius: 10px;
+  background: var(--blue-glow); border: 1px solid rgba(45,139,255,0.2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; margin-bottom: 14px;
+}
+.card-title { font-family: var(--font-head); font-size: 15px; font-weight: 800; margin-bottom: 8px; letter-spacing: -0.01em; }
+.card-score {
+  font-family: var(--font-mono); font-size: 24px; font-weight: 500;
+  color: var(--blue); margin-bottom: 8px;
+}
+.card-finding { font-size: 14px; color: var(--muted); line-height: 1.7; }
+
+/* ── RECOMMENDATIONS ── */
+.rec-list { display: flex; flex-direction: column; gap: 12px; }
+.rec-item {
+  display: flex; gap: 16px; align-items: flex-start;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  transition: border-color 0.2s;
+}
+.rec-item:hover { border-color: var(--border2); }
+.rec-num {
+  flex-shrink: 0; width: 28px; height: 28px;
+  background: var(--blue-glow); border: 1px solid rgba(45,139,255,0.3);
+  border-radius: 8px; display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-mono); font-size: 11px; font-weight: 500;
+  color: var(--blue); margin-top: 2px;
+}
+.rec-content { flex: 1; }
+.rec-title { font-weight: 700; font-size: 15px; margin-bottom: 5px; color: var(--text); }
+.rec-desc { font-size: 14px; color: var(--muted); line-height: 1.75; }
+.rec-meta { display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap; }
+.badge {
+  font-family: var(--font-mono); font-size: 10px; font-weight: 500;
+  padding: 2px 8px; border-radius: 4px; letter-spacing: 0.05em;
+  text-transform: uppercase; border: 1px solid;
+}
+.badge-high { background: rgba(34,211,138,0.1); color: var(--green); border-color: rgba(34,211,138,0.25); }
+.badge-med { background: rgba(255,171,46,0.1); color: var(--amber); border-color: rgba(255,171,46,0.25); }
+.badge-low { background: rgba(45,139,255,0.1); color: var(--blue); border-color: rgba(45,139,255,0.25); }
+.badge-effort { background: var(--bg3); color: var(--muted); border-color: var(--border); }
+
+/* ── REVENUE TABLE ── */
+.rev-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.rev-table th {
+  text-align: left; padding: 10px 16px;
+  font-family: var(--font-mono); font-size: 10px;
+  text-transform: uppercase; letter-spacing: 0.1em;
+  color: var(--muted); border-bottom: 1px solid var(--border2);
+}
+.rev-table td {
+  padding: 14px 16px; border-bottom: 1px solid var(--border);
+  color: var(--muted); vertical-align: top;
+}
+.rev-table td:first-child { color: var(--text); font-weight: 500; }
+.rev-table tr:last-child td { border-bottom: none; }
+.rev-table tr:hover td { background: var(--surface2); }
+.rev-table tr.total td {
+  font-weight: 500; color: var(--green);
+  border-top: 1px solid var(--border2);
+  font-family: var(--font-mono);
+}
+.rev-table-wrap {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); overflow: hidden;
+}
+
+/* ── NEXT STEPS ── */
+.steps { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; }
+.step-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 20px;
+  display: flex; flex-direction: column; gap: 10px;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.step-card:hover { border-color: var(--blue); transform: translateY(-2px); }
+.step-n {
+  font-family: var(--font-head); font-size: 30px; font-weight: 900;
+  color: var(--blue); opacity: 0.3; line-height: 1; letter-spacing: -0.02em;
+}
+.step-title { font-weight: 700; font-size: 15px; color: var(--text); }
+.step-desc { font-size: 14px; color: var(--muted); line-height: 1.7; }
+.step-time {
+  font-family: var(--font-mono); font-size: 10px;
+  color: var(--blue); letter-spacing: 0.05em;
+  text-transform: uppercase; margin-top: auto;
+}
+
+/* ── EXEC SUMMARY ── */
+.summary-box {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 28px 32px;
+  position: relative; overflow: hidden;
+}
+.summary-box::before {
+  content: '';
+  position: absolute; left: 0; top: 0; bottom: 0;
+  width: 3px; background: var(--blue);
+}
+.summary-text { font-size: 16px; color: var(--muted); line-height: 1.85; }
+.summary-text strong { color: var(--text); }
+
+/* ── STRENGTHS / GAPS ── */
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 24px; }
+@media (max-width: 640px) { .two-col { grid-template-columns: 1fr; } }
+.strength-card, .gap-card {
+  background: var(--surface); border-radius: var(--radius);
+  padding: 20px; border: 1px solid var(--border);
+}
+.strength-card { border-top: 2px solid var(--green); }
+.gap-card { border-top: 2px solid var(--red); }
+.sg-title {
+  font-family: var(--font-mono); font-size: 11px; font-weight: 500;
+  text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 14px;
+}
+.sg-title.green { color: var(--green); }
+.sg-title.red { color: var(--red); }
+.sg-list { display: flex; flex-direction: column; gap: 10px; }
+.sg-item {
+  display: flex; gap: 10px; align-items: flex-start;
+  font-size: 13px; line-height: 1.5;
+}
+.sg-dot {
+  flex-shrink: 0; width: 6px; height: 6px;
+  border-radius: 50%; margin-top: 6px;
+}
+.sg-dot.green { background: var(--green); box-shadow: 0 0 6px rgba(34,211,138,0.6); }
+.sg-dot.red { background: var(--red); box-shadow: 0 0 6px rgba(255,87,87,0.6); }
+
+/* ── FOOTER ── */
+footer {
+  padding: 32px 24px; text-align: center;
+  border-top: 1px solid var(--border);
+  font-family: var(--font-mono); font-size: 11px;
+  color: var(--muted); letter-spacing: 0.05em;
+}
+footer span { color: var(--blue); }
+footer a { color: var(--blue); text-decoration: none; }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.fade-up { animation: fadeUp 0.6s ease forwards; opacity: 0; }
+.delay-1 { animation-delay: 0.1s; }
+.delay-2 { animation-delay: 0.2s; }
+.delay-3 { animation-delay: 0.3s; }
+.delay-4 { animation-delay: 0.4s; }
+
+/* ── PRINT ── */
+@media print {
+  .topbar, .print-btn { display: none; }
+  .hero::before { display: none; }
+  body { background: white; color: #111; }
+  :root {
+    --bg: #fff; --surface: #f8f9fc; --text: #111;
+    --muted: #555; --border: #ddd; --border2: #ccc;
+    --bg3: #f0f2f8; --blue: #1a6fd8; --blue-glow: rgba(26,111,216,0.08);
+  }
+  .card, .rec-item, .step-card { break-inside: avoid; }
+  section { padding: 24px 0; }
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .hero { padding: 60px 24px 48px; }
+  section { padding: 36px 20px; }
+  .score-item { grid-template-columns: 1fr auto; }
+  .score-item-sub { display: none; }
+}
+@media (max-width: 480px) {
+  .topbar { padding: 10px 16px; }
+  .topbar-brand { font-size: 13px; }
+  .lang-btn { padding: 4px 10px; font-size: 10px; }
+  .cards { grid-template-columns: 1fr; }
+  .steps { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="topbar-brand">Audit My Site</div>
+  <div class="topbar-actions">
+    <div class="lang-toggle">
+      <button class="lang-btn active" id="btn-en" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" id="btn-fr" onclick="setLang('fr')">FR</button>
+    </div>
+    <button class="print-btn" onclick="window.print()">⬇ Export PDF</button>
+  </div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-meta" id="hero-meta">Marketing Audit Report · 2026</div>
+    <div class="hero-grid">
+      <div class="fade-up">
+        <h1 class="hero-title" id="hero-title">
+          <span id="brand-name">Nike.com</span><br>
+          <span id="hero-subtitle">Marketing Analysis</span>
+        </h1>
+        <div class="hero-url" id="hero-url">https://nike.com</div>
+        <div class="hero-tags">
+          <span class="tag tag-blue" id="tag-type">E-commerce · Global Brand</span>
+          <span class="tag tag-green" id="tag-date">March 2026</span>
+          <span class="tag tag-amber" id="tag-analyst">Audit My Site AI</span>
+        </div>
+      </div>
+      <div class="fade-up delay-2" style="text-align:center">
+        <div class="score-circle">
+          <svg width="140" height="140" viewBox="0 0 140 140">
+            <circle class="score-circle-bg" cx="70" cy="70" r="54"/>
+            <circle class="score-circle-fill" id="score-ring" cx="70" cy="70" r="54"/>
+          </svg>
+          <div class="score-circle-val">
+            <div class="score-num" id="score-num">85</div>
+            <div class="score-den">/100</div>
+          </div>
+        </div>
+        <div class="score-grade" id="score-grade">B+</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- EXECUTIVE SUMMARY -->
+<section>
+  <div class="container">
+    <div class="section-label" id="lbl-summary">01 — Executive Summary</div>
+    <h2 class="section-title fade-up" id="ttl-summary">At a Glance</h2>
+    <div class="summary-box fade-up delay-1">
+      <p class="summary-text" id="summary-text">
+        <strong id="brand-name-2">Nike.com</strong> <span id="summary-body">scores <strong>85/100</strong> — a near-elite marketing presence built on one of the world's most recognised brand identities. The "Just Do It" tagline communicates instantly and the membership ecosystem creates strong retention. However, the homepage lacks a benefit-driven H1 above the fold for first-time visitors, and social proof (customer reviews, star ratings) surfaces too deep in the funnel. Addressing these two gaps could meaningfully lift conversion for new visitor acquisition.</span>
+      </p>
+    </div>
+    <div class="two-col">
+      <div class="strength-card fade-up delay-2">
+        <div class="sg-title green" id="lbl-strengths">✓ Top Strengths</div>
+        <div class="sg-list" id="strengths-list">
+          <div class="sg-item"><div class="sg-dot green"></div><span id="s1">Iconic brand clarity — zero ambiguity on value prop</span></div>
+          <div class="sg-item"><div class="sg-dot green"></div><span id="s2">Membership ecosystem drives strong retention loops</span></div>
+          <div class="sg-item"><div class="sg-dot green"></div><span id="s3">Deep gender & segment navigation builds confidence</span></div>
+        </div>
+      </div>
+      <div class="gap-card fade-up delay-3">
+        <div class="sg-title red" id="lbl-gaps">✗ Critical Gaps</div>
+        <div class="sg-list" id="gaps-list">
+          <div class="sg-item"><div class="sg-dot red"></div><span id="g1">No persuasive headline copy above the fold</span></div>
+          <div class="sg-item"><div class="sg-dot red"></div><span id="g2">Social proof (reviews, ratings) buried too deep</span></div>
+          <div class="sg-item"><div class="sg-dot red"></div><span id="g3">Mega-menu with 20+ links risks navigation overwhelm</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCORE BREAKDOWN -->
+<section>
+  <div class="container">
+    <div class="section-label" id="lbl-scores">02 — Score Breakdown</div>
+    <h2 class="section-title fade-up" id="ttl-scores">Performance by Category</h2>
+    <div class="score-grid">
+      <div class="score-item fade-up delay-1">
+        <div><div class="score-item-name" id="cat1-name">Content & Messaging</div><div class="score-item-sub" id="cat1-sub">Copy quality, value proposition</div></div>
+        <div class="bar-track"><div class="bar-fill green" data-score="88"></div></div>
+        <div class="score-val">88/100</div>
+      </div>
+      <div class="score-item fade-up delay-2">
+        <div><div class="score-item-name" id="cat2-name">Conversion Optimisation</div><div class="score-item-sub" id="cat2-sub">CTAs, funnels, friction</div></div>
+        <div class="bar-track"><div class="bar-fill amber" data-score="72"></div></div>
+        <div class="score-val">72/100</div>
+      </div>
+      <div class="score-item fade-up delay-3">
+        <div><div class="score-item-name" id="cat3-name">SEO & Visibility</div><div class="score-item-sub" id="cat3-sub">On-page, technical, content</div></div>
+        <div class="bar-track"><div class="bar-fill green" data-score="80"></div></div>
+        <div class="score-val">80/100</div>
+      </div>
+      <div class="score-item fade-up delay-4">
+        <div><div class="score-item-name" id="cat4-name">Competitive Positioning</div><div class="score-item-sub" id="cat4-sub">Differentiation, market awareness</div></div>
+        <div class="bar-track"><div class="bar-fill green" data-score="92"></div></div>
+        <div class="score-val">92/100</div>
+      </div>
+      <div class="score-item fade-up delay-1">
+        <div><div class="score-item-name" id="cat5-name">Brand & Trust</div><div class="score-item-sub" id="cat5-sub">Consistency, authority signals</div></div>
+        <div class="bar-track"><div class="bar-fill green" data-score="95"></div></div>
+        <div class="score-val">95/100</div>
+      </div>
+      <div class="score-item fade-up delay-2">
+        <div><div class="score-item-name" id="cat6-name">Growth & Strategy</div><div class="score-item-sub" id="cat6-sub">Pricing, acquisition, retention</div></div>
+        <div class="bar-track"><div class="bar-fill amber" data-score="78"></div></div>
+        <div class="score-val">78/100</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DETAILED ANALYSIS -->
+<section>
+  <div class="container">
+    <div class="section-label" id="lbl-analysis">03 — Detailed Analysis</div>
+    <h2 class="section-title fade-up" id="ttl-analysis">Category Deep Dive</h2>
+    <div class="cards">
+      <div class="card fade-up delay-1">
+        <div class="card-icon">✍️</div>
+        <div class="card-title" id="card1-title">Content & Messaging</div>
+        <div class="card-score">88/100</div>
+        <div class="card-finding" id="card1-finding">Brand tagline delivers instant clarity. Product descriptions are feature-rich but could lead more strongly with emotional benefits for new visitors.</div>
+      </div>
+      <div class="card fade-up delay-2">
+        <div class="card-icon">🎯</div>
+        <div class="card-title" id="card2-title">Conversion Optimisation</div>
+        <div class="card-score" style="color:var(--amber)">72/100</div>
+        <div class="card-finding" id="card2-finding">Primary CTA is visible but generic. No urgency or scarcity on homepage. Social proof (4.8★ from 12K reviews) should be surfaced above the fold.</div>
+      </div>
+      <div class="card fade-up delay-3">
+        <div class="card-icon">🔍</div>
+        <div class="card-title" id="card3-title">SEO & Visibility</div>
+        <div class="card-score">80/100</div>
+        <div class="card-finding" id="card3-finding">Strong domain authority. Title tags optimised. Meta descriptions on product pages are auto-generated and lack compelling CTAs.</div>
+      </div>
+      <div class="card fade-up delay-1">
+        <div class="card-icon">⚔️</div>
+        <div class="card-title" id="card4-title">Competitive Positioning</div>
+        <div class="card-score">92/100</div>
+        <div class="card-finding" id="card4-finding">Category-defining brand. "Just Do It" is cultural capital. NikePlus ecosystem creates genuine switching costs competitors cannot easily replicate.</div>
+      </div>
+      <div class="card fade-up delay-2">
+        <div class="card-icon">🛡️</div>
+        <div class="card-title" id="card5-title">Brand & Trust</div>
+        <div class="card-score">95/100</div>
+        <div class="card-finding" id="card5-finding">Near-perfect brand consistency. Visual identity, voice and messaging are coherent across all pages. Athlete partnerships add exceptional authority.</div>
+      </div>
+      <div class="card fade-up delay-3">
+        <div class="card-icon">📈</div>
+        <div class="card-title" id="card6-title">Growth & Strategy</div>
+        <div class="card-score" style="color:var(--amber)">78/100</div>
+        <div class="card-finding" id="card6-finding">Membership programme is strong. Content calendar and seasonal pivots are well-executed. Blog content could be deeper to capture informational search intent.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RECOMMENDATIONS -->
+<section>
+  <div class="container">
+    <div class="section-label" id="lbl-recs">04 — Recommendations</div>
+    <h2 class="section-title fade-up" id="ttl-recs">Priority Action Plan</h2>
+    <div class="rec-list">
+      <div class="rec-item fade-up delay-1">
+        <div class="rec-num">01</div>
+        <div class="rec-content">
+          <div class="rec-title" id="rec1-title">Add a benefit-driven H1 above the fold</div>
+          <div class="rec-desc" id="rec1-desc">Replace the current visual-only hero with a headline that speaks to a specific desire. Example: "Built for athletes who refuse to stop." This gives first-time visitors a reason to stay.</div>
+          <div class="rec-meta">
+            <span class="badge badge-high" id="lbl-impact">HIGH IMPACT</span>
+            <span class="badge badge-effort" id="rec1-effort">Low effort · 1 day</span>
+          </div>
+        </div>
+      </div>
+      <div class="rec-item fade-up delay-2">
+        <div class="rec-num">02</div>
+        <div class="rec-content">
+          <div class="rec-title" id="rec2-title">Surface social proof on the homepage hero</div>
+          <div class="rec-desc" id="rec2-desc">Add "4.8★ rated by 12,000+ athletes" as a trust badge directly below the primary CTA. This single change can lift click-through by 15-25% for new visitors.</div>
+          <div class="rec-meta">
+            <span class="badge badge-high">HIGH IMPACT</span>
+            <span class="badge badge-effort" id="rec2-effort">Low effort · 2 hours</span>
+          </div>
+        </div>
+      </div>
+      <div class="rec-item fade-up delay-3">
+        <div class="rec-num">03</div>
+        <div class="rec-content">
+          <div class="rec-title" id="rec3-title">Reduce mega-menu to top 6 categories</div>
+          <div class="rec-desc" id="rec3-desc">Progressive disclosure: show 6 top-level categories, let users drill down. Fewer choices at the top level reduces decision paralysis and bounce rate, especially on mobile.</div>
+          <div class="rec-meta">
+            <span class="badge badge-med" id="lbl-med">MEDIUM IMPACT</span>
+            <span class="badge badge-effort" id="rec3-effort">Medium effort · 1 week</span>
+          </div>
+        </div>
+      </div>
+      <div class="rec-item fade-up delay-4">
+        <div class="rec-num">04</div>
+        <div class="rec-content">
+          <div class="rec-title" id="rec4-title">Enrich meta descriptions on product pages</div>
+          <div class="rec-desc" id="rec4-desc">Replace auto-generated meta descriptions with hand-crafted versions that include the product's key benefit and a CTA. Improves organic click-through rate by an estimated 10-20%.</div>
+          <div class="rec-meta">
+            <span class="badge badge-med">MEDIUM IMPACT</span>
+            <span class="badge badge-effort" id="rec4-effort">Low effort · Ongoing</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVENUE IMPACT -->
+<section>
+  <div class="container">
+    <div class="section-label" id="lbl-revenue">05 — Revenue Impact</div>
+    <h2 class="section-title fade-up" id="ttl-revenue">Estimated Monthly Opportunity</h2>
+    <div class="rev-table-wrap fade-up delay-1">
+      <table class="rev-table">
+        <thead>
+          <tr>
+            <th id="th-rec">Recommendation</th>
+            <th id="th-impact">Est. Monthly Impact</th>
+            <th id="th-conf">Confidence</th>
+            <th id="th-time">Timeline</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td id="tr1-name">Benefit-driven H1 above fold</td>
+            <td style="color:var(--green);font-family:var(--font-mono)">+€8,000–15,000</td>
+            <td><span class="badge badge-high" id="conf-high">High</span></td>
+            <td style="font-family:var(--font-mono);font-size:12px" id="tr1-time">1 day</td>
+          </tr>
+          <tr>
+            <td id="tr2-name">Social proof on hero</td>
+            <td style="color:var(--green);font-family:var(--font-mono)">+€5,000–10,000</td>
+            <td><span class="badge badge-high">High</span></td>
+            <td style="font-family:var(--font-mono);font-size:12px" id="tr2-time">2 hours</td>
+          </tr>
+          <tr>
+            <td id="tr3-name">Simplified navigation</td>
+            <td style="color:var(--amber);font-family:var(--font-mono)">+€3,000–6,000</td>
+            <td><span class="badge badge-med" id="conf-med">Medium</span></td>
+            <td style="font-family:var(--font-mono);font-size:12px" id="tr3-time">1 week</td>
+          </tr>
+          <tr>
+            <td id="tr4-name">Meta description optimisation</td>
+            <td style="color:var(--amber);font-family:var(--font-mono)">+€2,000–4,000</td>
+            <td><span class="badge badge-med">Medium</span></td>
+            <td style="font-family:var(--font-mono);font-size:12px" id="tr4-time">Ongoing</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr class="total">
+            <td id="total-label">Total Monthly Potential</td>
+            <td id="total-amount">+€18,000–35,000/month</td>
+            <td colspan="2" id="total-period">Within 90 days</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- NEXT STEPS -->
+<section>
+  <div class="container">
+    <div class="section-label" id="lbl-next">06 — Next Steps</div>
+    <h2 class="section-title fade-up" id="ttl-next">Where to Start</h2>
+    <div class="steps">
+      <div class="step-card fade-up delay-1">
+        <div class="step-n">01</div>
+        <div class="step-title" id="step1-title">Fix the headline</div>
+        <div class="step-desc" id="step1-desc">Write 3 benefit-driven H1 options and A/B test them. Use /market copy for rewrite suggestions.</div>
+        <div class="step-time" id="step1-time">This week</div>
+      </div>
+      <div class="step-card fade-up delay-2">
+        <div class="step-n">02</div>
+        <div class="step-title" id="step2-title">Add social proof badge</div>
+        <div class="step-desc" id="step2-desc">Place star rating + review count directly below the primary CTA. Zero development needed — CSS only.</div>
+        <div class="step-time" id="step2-time">Today — 2 hours</div>
+      </div>
+      <div class="step-card fade-up delay-3">
+        <div class="step-n">03</div>
+        <div class="step-title" id="step3-title">Run a full audit</div>
+        <div class="step-desc" id="step3-desc">Use /market audit for a 5-agent deep analysis of every page — funnel, SEO, competitors and more.</div>
+        <div class="step-time" id="step3-time">This month</div>
+      </div>
+      <div class="step-card fade-up delay-4">
+        <div class="step-n">04</div>
+        <div class="step-title" id="step4-title">Track & iterate</div>
+        <div class="step-desc" id="step4-desc">Re-run /market quick after each change to measure score improvement and validate impact.</div>
+        <div class="step-time" id="step4-time">Ongoing</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span>Audit My Site</span> · Complete AI Marketing Suite ·
+  <a href="https://github.com/johssinma/test_marketing">github.com/johssinma/test_marketing</a>
+  · <span id="footer-date">March 2026</span>
+</footer>
+
+<script>
+// ── LANGUAGE TOGGLE ──
+const t = {
+  en: {
+    'hero-meta': 'Marketing Audit Report · 2026',
+    'hero-subtitle': 'Marketing Analysis',
+    'lbl-summary': '01 — Executive Summary',
+    'ttl-summary': 'At a Glance',
+    'lbl-strengths': '✓ Top Strengths',
+    'lbl-gaps': '✗ Critical Gaps',
+    'lbl-scores': '02 — Score Breakdown',
+    'ttl-scores': 'Performance by Category',
+    'cat1-name': 'Content & Messaging', 'cat1-sub': 'Copy quality, value proposition',
+    'cat2-name': 'Conversion Optimisation', 'cat2-sub': 'CTAs, funnels, friction',
+    'cat3-name': 'SEO & Visibility', 'cat3-sub': 'On-page, technical, content',
+    'cat4-name': 'Competitive Positioning', 'cat4-sub': 'Differentiation, market awareness',
+    'cat5-name': 'Brand & Trust', 'cat5-sub': 'Consistency, authority signals',
+    'cat6-name': 'Growth & Strategy', 'cat6-sub': 'Pricing, acquisition, retention',
+    'lbl-analysis': '03 — Detailed Analysis', 'ttl-analysis': 'Category Deep Dive',
+    'card1-title': 'Content & Messaging',
+    'card1-finding': 'Brand tagline delivers instant clarity. Product descriptions are feature-rich but could lead more strongly with emotional benefits for new visitors.',
+    'card2-title': 'Conversion Optimisation',
+    'card2-finding': 'Primary CTA is visible but generic. No urgency or scarcity on homepage. Social proof (4.8★ from 12K reviews) should be surfaced above the fold.',
+    'card3-title': 'SEO & Visibility',
+    'card3-finding': 'Strong domain authority. Title tags optimised. Meta descriptions on product pages are auto-generated and lack compelling CTAs.',
+    'card4-title': 'Competitive Positioning',
+    'card4-finding': 'Category-defining brand. "Just Do It" is cultural capital. NikePlus ecosystem creates genuine switching costs competitors cannot easily replicate.',
+    'card5-title': 'Brand & Trust',
+    'card5-finding': 'Near-perfect brand consistency. Visual identity, voice and messaging are coherent across all pages. Athlete partnerships add exceptional authority.',
+    'card6-title': 'Growth & Strategy',
+    'card6-finding': 'Membership programme is strong. Content calendar and seasonal pivots are well-executed. Blog content could be deeper to capture informational search intent.',
+    'lbl-recs': '04 — Recommendations', 'ttl-recs': 'Priority Action Plan',
+    'rec1-title': 'Add a benefit-driven H1 above the fold',
+    'rec1-desc': 'Replace the current visual-only hero with a headline that speaks to a specific desire. Example: "Built for athletes who refuse to stop." This gives first-time visitors a reason to stay.',
+    'rec1-effort': 'Low effort · 1 day',
+    'rec2-title': 'Surface social proof on the homepage hero',
+    'rec2-desc': 'Add "4.8★ rated by 12,000+ athletes" as a trust badge directly below the primary CTA. This single change can lift click-through by 15-25% for new visitors.',
+    'rec2-effort': 'Low effort · 2 hours',
+    'rec3-title': 'Reduce mega-menu to top 6 categories',
+    'rec3-desc': 'Progressive disclosure: show 6 top-level categories, let users drill down. Fewer choices at the top level reduces decision paralysis and bounce rate.',
+    'rec3-effort': 'Medium effort · 1 week',
+    'rec4-title': 'Enrich meta descriptions on product pages',
+    'rec4-desc': 'Replace auto-generated meta descriptions with hand-crafted versions that include the product benefit and a CTA. Improves organic click-through by 10-20%.',
+    'rec4-effort': 'Low effort · Ongoing',
+    'lbl-impact': 'HIGH IMPACT', 'lbl-med': 'MEDIUM IMPACT',
+    'lbl-revenue': '05 — Revenue Impact', 'ttl-revenue': 'Estimated Monthly Opportunity',
+    'th-rec': 'Recommendation', 'th-impact': 'Est. Monthly Impact', 'th-conf': 'Confidence', 'th-time': 'Timeline',
+    'tr1-name': 'Benefit-driven H1 above fold', 'tr1-time': '1 day',
+    'tr2-name': 'Social proof on hero', 'tr2-time': '2 hours',
+    'tr3-name': 'Simplified navigation', 'tr3-time': '1 week',
+    'tr4-name': 'Meta description optimisation', 'tr4-time': 'Ongoing',
+    'total-label': 'Total Monthly Potential', 'total-amount': '+€18,000–35,000/month', 'total-period': 'Within 90 days',
+    'conf-high': 'High', 'conf-med': 'Medium',
+    'lbl-next': '06 — Next Steps', 'ttl-next': 'Where to Start',
+    'step1-title': 'Fix the headline', 'step1-desc': 'Write 3 benefit-driven H1 options and A/B test them. Use /market copy for rewrite suggestions.', 'step1-time': 'This week',
+    'step2-title': 'Add social proof badge', 'step2-desc': 'Place star rating + review count directly below the primary CTA. Zero development needed — CSS only.', 'step2-time': 'Today — 2 hours',
+    'step3-title': 'Run a full audit', 'step3-desc': 'Use /market audit for a 5-agent deep analysis of every page — funnel, SEO, competitors and more.', 'step3-time': 'This month',
+    'step4-title': 'Track & iterate', 'step4-desc': 'Re-run /market quick after each change to measure score improvement and validate impact.', 'step4-time': 'Ongoing',
+    'summary-body': 'scores <strong>85/100</strong> — a near-elite marketing presence built on one of the world\'s most recognised brand identities. The "Just Do It" tagline communicates instantly and the membership ecosystem creates strong retention. The homepage lacks a benefit-driven H1 above the fold for first-time visitors, and social proof surfaces too deep in the funnel. Addressing these gaps could meaningfully lift conversion.',
+    's1': 'Iconic brand clarity — zero ambiguity on value prop',
+    's2': 'Membership ecosystem drives strong retention loops',
+    's3': 'Deep gender & segment navigation builds confidence',
+    'g1': 'No persuasive headline copy above the fold',
+    'g2': 'Social proof (reviews, ratings) buried too deep',
+    'g3': 'Mega-menu with 20+ links risks navigation overwhelm',
+    'tag-type': 'E-commerce · Global Brand', 'tag-date': 'March 2026', 'tag-analyst': 'Audit My Site AI',
+  },
+  fr: {
+    'hero-meta': 'Rapport d\'Audit Marketing · 2026',
+    'hero-subtitle': 'Analyse Marketing',
+    'lbl-summary': '01 — Résumé Exécutif',
+    'ttl-summary': 'Vue d\'Ensemble',
+    'lbl-strengths': '✓ Points Forts',
+    'lbl-gaps': '✗ Lacunes Critiques',
+    'lbl-scores': '02 — Décomposition des Scores',
+    'ttl-scores': 'Performance par Catégorie',
+    'cat1-name': 'Contenu & Messages', 'cat1-sub': 'Qualité du copy, proposition de valeur',
+    'cat2-name': 'Optimisation Conversion', 'cat2-sub': 'CTA, tunnels, friction',
+    'cat3-name': 'SEO & Visibilité', 'cat3-sub': 'On-page, technique, contenu',
+    'cat4-name': 'Positionnement Concurrentiel', 'cat4-sub': 'Différenciation, conscience du marché',
+    'cat5-name': 'Marque & Confiance', 'cat5-sub': 'Cohérence, signaux d\'autorité',
+    'cat6-name': 'Croissance & Stratégie', 'cat6-sub': 'Tarification, acquisition, fidélisation',
+    'lbl-analysis': '03 — Analyse Détaillée', 'ttl-analysis': 'Plongée par Catégorie',
+    'card1-title': 'Contenu & Messages',
+    'card1-finding': 'Le slogan de marque apporte une clarté immédiate. Les descriptions produits sont riches mais pourraient mettre davantage en avant les bénéfices émotionnels pour les nouveaux visiteurs.',
+    'card2-title': 'Optimisation Conversion',
+    'card2-finding': 'Le CTA principal est visible mais générique. Pas d\'urgence ni de rareté sur la page d\'accueil. La preuve sociale (4,8★ sur 12K avis) devrait être remontée au-dessus de la ligne de flottaison.',
+    'card3-title': 'SEO & Visibilité',
+    'card3-finding': 'Forte autorité de domaine. Balises title optimisées. Les méta-descriptions sur les pages produits sont auto-générées et manquent de CTA convaincants.',
+    'card4-title': 'Positionnement Concurrentiel',
+    'card4-finding': 'Marque qui définit sa catégorie. "Just Do It" est un capital culturel. L\'écosystème NikePlus crée des coûts de changement réels que les concurrents ne peuvent pas facilement répliquer.',
+    'card5-title': 'Marque & Confiance',
+    'card5-finding': 'Cohérence de marque quasi-parfaite. L\'identité visuelle, la voix et les messages sont cohérents sur toutes les pages. Les partenariats avec les athlètes apportent une autorité exceptionnelle.',
+    'card6-title': 'Croissance & Stratégie',
+    'card6-finding': 'Le programme de membership est solide. Le calendrier de contenu et les pivots saisonniers sont bien exécutés. Le contenu du blog pourrait être plus approfondi pour capter l\'intention de recherche informationnelle.',
+    'lbl-recs': '04 — Recommandations', 'ttl-recs': 'Plan d\'Action Prioritaire',
+    'rec1-title': 'Ajouter un H1 orienté bénéfices au-dessus de la ligne de flottaison',
+    'rec1-desc': 'Remplacer le hero actuel uniquement visuel par un titre qui parle d\'un désir spécifique. Exemple : "Conçu pour les athlètes qui refusent d\'arrêter." Cela donne aux nouveaux visiteurs une raison de rester.',
+    'rec1-effort': 'Faible effort · 1 jour',
+    'rec2-title': 'Remonter la preuve sociale sur le hero de la page d\'accueil',
+    'rec2-desc': 'Ajouter "4,8★ évalué par 12 000+ athlètes" comme badge de confiance directement sous le CTA principal. Ce seul changement peut augmenter le taux de clic de 15-25% pour les nouveaux visiteurs.',
+    'rec2-effort': 'Faible effort · 2 heures',
+    'rec3-title': 'Réduire le méga-menu aux 6 catégories principales',
+    'rec3-desc': 'Divulgation progressive : montrer 6 catégories de premier niveau, laisser les utilisateurs descendre. Moins de choix en haut réduit la paralysie décisionnelle et le taux de rebond.',
+    'rec3-effort': 'Effort moyen · 1 semaine',
+    'rec4-title': 'Enrichir les méta-descriptions sur les pages produits',
+    'rec4-desc': 'Remplacer les méta-descriptions auto-générées par des versions rédigées incluant le bénéfice du produit et un CTA. Améliore le taux de clic organique de 10-20%.',
+    'rec4-effort': 'Faible effort · Continu',
+    'lbl-impact': 'FORT IMPACT', 'lbl-med': 'IMPACT MOYEN',
+    'lbl-revenue': '05 — Impact sur les Revenus', 'ttl-revenue': 'Opportunité Mensuelle Estimée',
+    'th-rec': 'Recommandation', 'th-impact': 'Impact Mensuel Est.', 'th-conf': 'Confiance', 'th-time': 'Délai',
+    'tr1-name': 'H1 orienté bénéfices', 'tr1-time': '1 jour',
+    'tr2-name': 'Preuve sociale sur le hero', 'tr2-time': '2 heures',
+    'tr3-name': 'Navigation simplifiée', 'tr3-time': '1 semaine',
+    'tr4-name': 'Optimisation méta-descriptions', 'tr4-time': 'Continu',
+    'total-label': 'Potentiel Mensuel Total', 'total-amount': '+18 000–35 000 €/mois', 'total-period': 'En 90 jours',
+    'conf-high': 'Élevée', 'conf-med': 'Moyenne',
+    'lbl-next': '06 — Prochaines Étapes', 'ttl-next': 'Par où Commencer',
+    'step1-title': 'Corriger le titre', 'step1-desc': 'Rédiger 3 options de H1 orientés bénéfices et les tester en A/B. Utiliser /market copy pour des suggestions de réécriture.', 'step1-time': 'Cette semaine',
+    'step2-title': 'Ajouter un badge de confiance', 'step2-desc': 'Placer la note étoiles + nombre d\'avis directement sous le CTA principal. Aucun développement nécessaire — CSS uniquement.', 'step2-time': 'Aujourd\'hui — 2h',
+    'step3-title': 'Lancer un audit complet', 'step3-desc': 'Utiliser /market audit pour une analyse approfondie à 5 agents de toutes les pages — tunnel, SEO, concurrents et plus.', 'step3-time': 'Ce mois',
+    'step4-title': 'Suivre et itérer', 'step4-desc': 'Relancer /market quick après chaque changement pour mesurer l\'amélioration du score et valider l\'impact.', 'step4-time': 'En continu',
+    'summary-body': 'obtient un score de <strong>85/100</strong> — une présence marketing quasi-élite construite sur l\'une des identités de marque les plus reconnues au monde. Le slogan "Just Do It" communique instantanément et l\'écosystème de membership crée de solides boucles de rétention. La page d\'accueil manque d\'un H1 orienté bénéfices au-dessus de la ligne de flottaison, et la preuve sociale remonte trop tard dans le tunnel.',
+    's1': 'Clarté de marque iconique — aucune ambiguïté sur la valeur',
+    's2': 'L\'écosystème de membership crée de fortes boucles de rétention',
+    's3': 'Navigation profonde par genre et segment renforce la confiance',
+    'g1': 'Aucun titre persuasif au-dessus de la ligne de flottaison',
+    'g2': 'Preuve sociale (avis, notes) trop enfouie dans le tunnel',
+    'g3': 'Méga-menu avec 20+ liens risque de surcharger la navigation',
+    'tag-type': 'E-commerce · Marque Mondiale', 'tag-date': 'Mars 2026', 'tag-analyst': 'Audit My Site IA',
+  }
+};
+
+let lang = 'en';
+
+function setLang(l) {
+  lang = l;
+  document.getElementById('btn-en').classList.toggle('active', l === 'en');
+  document.getElementById('btn-fr').classList.toggle('active', l === 'fr');
+  document.documentElement.lang = l;
+  const data = t[l];
+  Object.keys(data).forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.innerHTML = data[id];
+  });
+}
+
+// ── ANIMATE BARS ──
+function animateBars() {
+  document.querySelectorAll('.bar-fill').forEach(bar => {
+    const score = parseInt(bar.dataset.score);
+    bar.style.width = score + '%';
+  });
+}
+
+// ── ANIMATE SCORE RING ──
+function animateRing() {
+  const score = parseInt(document.getElementById('score-num').textContent);
+  const circumference = 339.3;
+  const offset = circumference - (score / 100) * circumference;
+  const ring = document.getElementById('score-ring');
+  setTimeout(() => { ring.style.strokeDashoffset = offset; }, 300);
+}
+
+// ── INTERSECTION OBSERVER ──
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      animateBars();
+      animateRing();
+      observer.disconnect();
+    }
+  });
+}, { threshold: 0.1 });
+
+observer.observe(document.querySelector('.score-grid') || document.body);
+
+// Init
+window.addEventListener('DOMContentLoaded', () => {
+  setTimeout(animateRing, 500);
+  setTimeout(animateBars, 600);
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+# Audit My Site — Complete AI Marketing Suite
+# Python Dependencies
+# https://github.com/johssinma/test_marketing
+
+# ─────────────────────────────────────────────
+# CORE (no external libraries required)
+# All scripts use Python standard library by default
+# Minimum Python version: 3.8+
+# ─────────────────────────────────────────────
+
+# ─────────────────────────────────────────────
+# OPTIONAL — Enhanced features
+# ─────────────────────────────────────────────
+
+# PDF report generation (/market report-pdf)
+reportlab==4.0.4
+
+# HTTP requests with retry support (improves scraping reliability)
+# requests>=2.31.0
+
+# Advanced web scraping (bypasses Cloudflare protection)
+# playwright>=1.40.0
+
+# ─────────────────────────────────────────────
+# INSTALL
+# ─────────────────────────────────────────────
+# Minimal install (PDF reports only):
+#   pip install reportlab==4.0.4
+#
+# Full install (all features):
+#   pip install -r requirements.txt
+# ─────────────────────────────────────────────
