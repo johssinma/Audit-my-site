@@ -116,8 +116,8 @@ bash install.sh
        ▼
   Orchestrator — fetches homepage + 5 key pages
        │
-       ├──────────────────────────────────────────┐
-       ▼              ▼              ▼             ▼             ▼
+       ├────────────────│──────────────────│───────────────────│────────────────┐
+       ▼                ▼                  ▼                   ▼                ▼
   market-content  market-conversion  market-technical  market-competitive  market-strategy
   Copy & Messaging  CRO & Funnels   SEO & Tracking   Competitor Intel    Brand & Growth
      25% weight      20% weight      20% weight        15% weight        10% + 10%
