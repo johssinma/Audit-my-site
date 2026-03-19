@@ -116,8 +116,8 @@ bash install.sh
        ▼
   Orchestrateur — récupère la page d'accueil + 5 pages clés
        │
-       ├──────────────────────────────────────────────┐
-       ▼              ▼              ▼                ▼             ▼
+       ├──────────────│────────────────────│────────────────│──────────────────│
+       ▼              ▼                    ▼                ▼                  ▼
   market-content  market-conversion  market-technical  market-competitive  market-strategy
   Contenu & Copy   CRO & Tunnels    SEO & Tracking   Intelligence conc.  Marque & Croissance
      25% poids       20% poids       20% poids          15% poids         10% + 10%
