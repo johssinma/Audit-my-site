@@ -1,34 +1,27 @@
+# 🔍 Audit My Site — AI Marketing Suite for Claude Code
 
-<div align="center">
-<img src="https://img.shields.io/badge/Audit_My_Site-AI_Marketing_Suite-0f1117?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PGNpcmNsZSBjeD0iMTIiIGN5PSIxMiIgcj0iNSIgZmlsbD0iIzJkOGJmZiIvPjwvc3ZnPg==&labelColor=0f1117&color=2d8bff" alt="Audit My Site"/>
-# 🔍 Audit My Site
+> **15 slash commands · 5 parallel AI agents · 4 Python scripts · Bilingual FR/EN**
 
-### Complete AI Marketing Suite for Claude Code
+[![License](https://img.shields.io/badge/license-MIT-22d38a.svg)](ai-marketing/LICENSE)
+[![Version](https://img.shields.io/badge/version-1.0.0-2d8bff.svg)](#)
+[![Bilingual](https://img.shields.io/badge/bilingual-FR%20%2F%20EN-f0b429.svg)](#)
+[![Built for](https://img.shields.io/badge/built%20for-Claude%20Code-7a8499.svg)](#)
 
-[![Version](https://img.shields.io/badge/version-1.0.0-2d8bff?style=flat-square)](https://github.com/johssinma/audit-my-site)
-[![License](https://img.shields.io/badge/license-MIT-22d38a?style=flat-square)](https://claude.ai/chat/ai-marketing/LICENSE)
-[![Language](https://img.shields.io/badge/bilingual-FR_%2F_EN-f0b429?style=flat-square)](https://claude.ai/chat/00d425f4-f104-489d-8487-9804a94e6bc0#)
-[![Claude Code](https://img.shields.io/badge/built_for-Claude_Code-7a8499?style=flat-square)](https://claude.ai/chat/00d425f4-f104-489d-8487-9804a94e6bc0#)
+**[🇫🇷 Version Française](README.md)**  |  🇬🇧 English
 
-<br/>
-[![Buy on Gumroad](https://img.shields.io/badge/%F0%9F%9B%92_Premium_Bundle_%E2%80%94_%E2%82%AC29-ff90e8?style=for-the-badge)](https://auditmysiteai.gumroad.com/l/audit-my-site)
-[![View on GitHub](https://img.shields.io/badge/%E2%AD%90_Star_on_GitHub-181717?style=for-the-badge&logo=github)](https://github.com/johssinma/audit-my-site)
-
-<br/>
-**15 slash commands  ·  5 parallel AI agents  ·  4 Python scripts  ·  Bilingual FR/EN**
-
-*Audit any website in 5 minutes — scored, prioritised, client-ready PDF*
-
-<br/>
-[🇫🇷 Version Française](https://claude.ai/chat/README.md)  |  🇬🇧 **English**
-
-</div>
 ---
 
+## 🛒 Get the Premium Bundle
 
----## ✨ What Is This?
+**[Buy on Gumroad — €29 one-time](https://auditmysiteai.gumroad.com/l/audit-my-site)**
 
-**Audit My Site** is a complete AI-powered marketing toolkit that lives inside Claude Code. Paste a URL, run a command — get a professional, scored marketing audit covering copywriting, SEO, conversion rate, competitive positioning and brand voice.
+> Includes: premium bilingual report template · client proposal template · pre-organised ZIP · 30-day personal support
+
+---
+
+## ✨ What Is This?
+
+**Audit My Site** is a complete AI-powered marketing toolkit that runs inside Claude Code. Paste a URL, run a command — get a professional, scored marketing audit in minutes.
 
 No SaaS subscription. No monthly fees. Runs locally from your terminal.
 
@@ -36,7 +29,7 @@ No SaaS subscription. No monthly fees. Runs locally from your terminal.
 
 ## 🏆 Real Output Example
 
-> Run `/market quick https://nike.com` → get this in 60 seconds:
+Run `/market quick https://nike.com` → get this in 60 seconds:
 
 ```
 ⚡ QUICK OVERVIEW: Nike.com
@@ -62,7 +55,7 @@ Stop showing products. Start showing transformation.
 
 ---
 
-## 📦 What's Installed
+## 📦 What Gets Installed
 
 |    | Component           | Count | Description                                |
 | -- | ------------------- | ----- | ------------------------------------------ |
@@ -95,88 +88,24 @@ bash install.sh
 
 ## 🚀 The 15 Commands
 
-<table>
-<tr>
-<th>Command</th>
-<th>What it does</th>
-<th>Output</th>
-</tr>
-<tr>
-<td><code>/market audit <url></code></td>
-<td>🔥 Full audit — 5 parallel AI agents</td>
-<td><code>MARKETING-AUDIT.md</code></td>
-</tr>
-<tr>
-<td><code>/market quick <url></code></td>
-<td>⚡ 60-second homepage scan</td>
-<td>Terminal</td>
-</tr>
-<tr>
-<td><code>/market copy <url></code></td>
-<td>✍️ Copywriting analysis + rewrites</td>
-<td><code>COPY-SUGGESTIONS.md</code></td>
-</tr>
-<tr>
-<td><code>/market emails <topic></code></td>
-<td>📧 Complete email sequences</td>
-<td><code>EMAIL-SEQUENCES.md</code></td>
-</tr>
-<tr>
-<td><code>/market social <topic></code></td>
-<td>📱 30-day social media calendar</td>
-<td><code>SOCIAL-CALENDAR.md</code></td>
-</tr>
-<tr>
-<td><code>/market ads <url></code></td>
-<td>📣 Ad scripts + creative briefs</td>
-<td><code>AD-CAMPAIGNS.md</code></td>
-</tr>
-<tr>
-<td><code>/market funnel <url></code></td>
-<td>💰 Sales funnel analysis</td>
-<td><code>FUNNEL-ANALYSIS.md</code></td>
-</tr>
-<tr>
-<td><code>/market competitors <url></code></td>
-<td>🔍 Competitive intelligence</td>
-<td><code>COMPETITORS-REPORT.md</code></td>
-</tr>
-<tr>
-<td><code>/market landing <url></code></td>
-<td>🎯 Landing page CRO analysis</td>
-<td><code>LANDING-ANALYSIS.md</code></td>
-</tr>
-<tr>
-<td><code>/market launch <product></code></td>
-<td>🚀 8-week product launch plan</td>
-<td><code>LAUNCH-PLAN.md</code></td>
-</tr>
-<tr>
-<td><code>/market proposal <client></code></td>
-<td>📋 Client proposal with ROI</td>
-<td><code>CLIENT-PROPOSAL.md</code></td>
-</tr>
-<tr>
-<td><code>/market report <url></code></td>
-<td>📊 Full marketing report (MD)</td>
-<td><code>MARKETING-REPORT.md</code></td>
-</tr>
-<tr>
-<td><code>/market report-pdf <url></code></td>
-<td>📄 Professional PDF report</td>
-<td><code>MARKETING-REPORT.pdf</code></td>
-</tr>
-<tr>
-<td><code>/market seo <url></code></td>
-<td>🔎 Content SEO audit</td>
-<td><code>SEO-AUDIT.md</code></td>
-</tr>
-<tr>
-<td><code>/market brand <url></code></td>
-<td>🎨 Brand voice style guide</td>
-<td><code>BRAND-VOICE.md</code></td>
-</tr>
-</table>
+| Command                       | What it does                          | Output file               |
+| ----------------------------- | ------------------------------------- | ------------------------- |
+| `/market audit <url>`       | 🔥 Full audit — 5 parallel AI agents | `MARKETING-AUDIT.md`    |
+| `/market quick <url>`       | ⚡ 60-second homepage scan            | Terminal                  |
+| `/market copy <url>`        | ✍️ Copywriting analysis + rewrites  | `COPY-SUGGESTIONS.md`   |
+| `/market emails <topic>`    | 📧 Complete email sequences           | `EMAIL-SEQUENCES.md`    |
+| `/market social <topic>`    | 📱 30-day social media calendar       | `SOCIAL-CALENDAR.md`    |
+| `/market ads <url>`         | 📣 Ad scripts + creative briefs       | `AD-CAMPAIGNS.md`       |
+| `/market funnel <url>`      | 💰 Sales funnel analysis              | `FUNNEL-ANALYSIS.md`    |
+| `/market competitors <url>` | 🔍 Competitive intelligence           | `COMPETITORS-REPORT.md` |
+| `/market landing <url>`     | 🎯 Landing page CRO analysis          | `LANDING-ANALYSIS.md`   |
+| `/market launch <product>`  | 🚀 8-week product launch plan         | `LAUNCH-PLAN.md`        |
+| `/market proposal <client>` | 📋 Client proposal with ROI           | `CLIENT-PROPOSAL.md`    |
+| `/market report <url>`      | 📊 Full marketing report (MD)         | `MARKETING-REPORT.md`   |
+| `/market report-pdf <url>`  | 📄 Professional PDF report            | `MARKETING-REPORT.pdf`  |
+| `/market seo <url>`         | 🔎 Content SEO audit                  | `SEO-AUDIT.md`          |
+| `/market brand <url>`       | 🎨 Brand voice style guide            | `BRAND-VOICE.md`        |
+
 ---
 
 ## 🏗️ How the Full Audit Works
@@ -185,32 +114,16 @@ bash install.sh
 /market audit <url>
        │
        ▼
-  Orchestrator
-  ┌─────────────────────────────────────────────────────┐
-  │  Fetches homepage + 5 key pages · Detects business  │
-  │  type · Maps site architecture                      │
-  └──────────────────────┬──────────────────────────────┘
-                         │
-          ┌──────────────┼──────────────┐
-          ▼              ▼              ▼
-    market-content  market-conversion  market-technical
-    Copy & Messaging  CRO & Funnels   SEO & Tracking
-       25% weight      20% weight      20% weight
-          │              │              │
-          └──────────────┼──────────────┘
-                    ┌────┴────┐
-                    ▼         ▼
-            market-competitive  market-strategy
-            Competitor Intel    Brand & Growth
-               15% weight        10% + 10%
-                    │
-                    ▼
-          Weighted composite score
-          ┌─────────────────────┐
-          │  MARKETING-AUDIT.md │
-          │  Score: XX/100 (A)  │
-          │  Client-ready PDF   │
-          └─────────────────────┘
+  Orchestrator — fetches homepage + 5 key pages
+       │
+       ├──────────────────────────────────────────┐
+       ▼              ▼              ▼             ▼             ▼
+  market-content  market-conversion  market-technical  market-competitive  market-strategy
+  Copy & Messaging  CRO & Funnels   SEO & Tracking   Competitor Intel    Brand & Growth
+     25% weight      20% weight      20% weight        15% weight        10% + 10%
+       │
+       ▼
+  Weighted composite score → MARKETING-AUDIT.md (scored, client-ready PDF)
 ```
 
 ---
@@ -228,32 +141,29 @@ bash install.sh
 
 ---
 
-## 🛒 Free vs Premium
+## 🆓 Free vs ⭐ Premium
 
-| Feature                      | 🆓 GitHub (Free) | ⭐ Gumroad Bundle (€29) |
-| ---------------------------- | :--------------: | :----------------------: |
-| All 15 slash commands        |        ✅        |            ✅            |
-| All 5 AI agents              |        ✅        |            ✅            |
-| FR + EN versions             |        ✅        |            ✅            |
-| Python scripts               |        ✅        |            ✅            |
-| Premium HTML report template |        ❌        |            ✅            |
-| Client proposal template     |        ❌        |            ✅            |
-| Pre-organised ZIP            |        ❌        |            ✅            |
-| Email updates                |        ❌        |            ✅            |
-| 30-day personal support      |        ❌        |            ✅            |
+| Feature                      | GitHub (Free) | Gumroad Bundle (€29) |
+| ---------------------------- | :-----------: | :-------------------: |
+| All 15 slash commands        |      ✅      |          ✅          |
+| All 5 AI agents              |      ✅      |          ✅          |
+| FR + EN versions             |      ✅      |          ✅          |
+| Python scripts               |      ✅      |          ✅          |
+| Premium HTML report template |      ❌      |          ✅          |
+| Client proposal template     |      ❌      |          ✅          |
+| Pre-organised ZIP            |      ❌      |          ✅          |
+| Email updates                |      ❌      |          ✅          |
+| 30-day personal support      |      ❌      |          ✅          |
 
-<div align="center">
-[![Get Premium Bundle](https://img.shields.io/badge/%F0%9F%9B%92_Get_Premium_Bundle_%E2%80%94_%E2%82%AC29-ff90e8?style=for-the-badge)](https://auditmysiteai.gumroad.com/l/audit-my-site)
+**[Get the Premium Bundle on Gumroad — €29](https://auditmysiteai.gumroad.com/l/audit-my-site)**
 
-</div>
 ---
 
-
----## 🗂️ Project Structure
+## 🗂️ Project Structure
 
 ```
 audit-my-site/
-├── 🇫🇷 ai-marketing/           French version
+├── ai-marketing/               🇫🇷 French version
 │   ├── agents/                 5 specialized AI sub-agents
 │   ├── market/                 Main orchestrator skill
 │   ├── skills/                 15 slash command skills
@@ -261,7 +171,7 @@ audit-my-site/
 │   ├── templates/              Client-facing templates
 │   └── install.sh
 │
-├── 🇬🇧 ai-marketing-english/   English version
+├── ai-marketing-english/       🇬🇧 English version
 │   ├── agents/
 │   ├── market/
 │   ├── skills/
@@ -281,7 +191,7 @@ audit-my-site/
 # Required
 npm install -g @anthropic-ai/claude-code   # Claude Code CLI
 
-# Optional (for PDF reports)
+# Optional — for PDF reports
 pip install reportlab==4.0.4
 ```
 
@@ -301,17 +211,15 @@ bash uninstall.sh
 
 **MIT** — use commercially, modify freely, deliver to clients under your own brand.
 
+See [LICENSE](ai-marketing/LICENSE)
+
 ---
 
-<div align="center">
-**Built by [Mohssine Mazouz](https://github.com/johssinma) · Bilingual FR/EN · MIT Licensed**
+Built by [Mohssine Mazouz](https://github.com/johssinma) · Bilingual FR/EN · MIT Licensed
 
-<br/>
-[![Buy Premium](https://img.shields.io/badge/%F0%9F%9B%92_Premium_Bundle-%E2%82%AC29-ff90e8?style=for-the-badge)](https://auditmysiteai.gumroad.com/l/audit-my-site)
+**[⭐ Star this repo](https://github.com/johssinma/audit-my-site)**  ·  **[🛒 Get Premium Bundle — €29](https://auditmysiteai.gumroad.com/l/audit-my-site)**
 
-[![GitHub](https://img.shields.io/badge/%E2%AD%90_Star_this_repo-181717?style=for-the-badge&logo=github)](https://github.com/johssinma/audit-my-site)
+*Turn any website into a revenue opportunity — in minutes.*`<div align="center">`
+`<img src="https://img.shields.io/badge/Audit_My_Site-AI_Marketing_Suite-0f1117?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PGNpcmNsZSBjeD0iMTIiIGN5PSIxMiIgcj0iNSIgZmlsbD0iIzJkOGJmZiIvPjwvc3ZnPg==&labelColor=0f1117&color=2d8bff" alt="Audit My Site"/>`
 
-<br/>
-*Turn any website into a revenue opportunity — in minutes.*
-
-</div>
+# 🔍 Audit My Site
