@@ -1,21 +1,27 @@
+
 # 🔍 Audit My Site — Suite Marketing IA pour Claude Code
 
 > **15 commandes slash · 5 agents IA parallèles · 4 scripts Python · Bilingue FR/EN**
 
-[![Licence](https://img.shields.io/badge/licence-MIT-22d38a.svg)](ai-marketing/LICENSE)
-[![Version](https://img.shields.io/badge/version-1.0.0-2d8bff.svg)](#)
-[![Bilingue](https://img.shields.io/badge/bilingue-FR%20%2F%20EN-f0b429.svg)](#)
-[![Conçu pour](https://img.shields.io/badge/conçu%20pour-Claude%20Code-7a8499.svg)](#)
+[![Licence](https://img.shields.io/badge/licence-MIT-22d38a.svg)](https://claude.ai/chat/ai-marketing/LICENSE)
+[![Version](https://img.shields.io/badge/version-1.0.0-2d8bff.svg)](https://claude.ai/chat/00d425f4-f104-489d-8487-9804a94e6bc0#)
+[![Bilingue](https://img.shields.io/badge/bilingue-FR%20%2F%20EN-f0b429.svg)](https://claude.ai/chat/00d425f4-f104-489d-8487-9804a94e6bc0#)
+[![Conçu pour](https://img.shields.io/badge/con%C3%A7u%20pour-Claude%20Code-7a8499.svg)](https://claude.ai/chat/00d425f4-f104-489d-8487-9804a94e6bc0#)
 
-🇫🇷 **Français**  |  **[🇬🇧 English version](README.en.md)**
+🇫🇷 **Français**  |  **[🇬🇧 English version](https://claude.ai/chat/README.en.md)**
 
 ---
 
-## 🛒 Obtenir le Bundle Premium
+## 🛒 Obtenir le Toolkit
 
-**[Acheter sur Gumroad — €29 paiement unique](https://auditmysiteai.gumroad.com/l/audit-my-site)**
+| Plateforme | Lien                                                                                    | Frais   |
+| ---------- | --------------------------------------------------------------------------------------- | ------- |
+| ⭐ Payhip  | **[Acheter sur Payhip — €29](https://payhip.com/b/FGatd)**                         | 5%      |
+| 🛒 Gumroad | **[Acheter sur Gumroad — €29](https://auditmysiteai.gumroad.com/l/audit-my-site)** | 10%     |
+| ☕ Ko-fi   | **[Soutenir sur Ko-fi](https://ko-fi.com/mohssinemazouz)**                           | 0%      |
+| 🐙 GitHub  | **[Version gratuite open source](https://github.com/johssinma/audit-my-site)**       | Gratuit |
 
-> Inclus : template de rapport HTML premium · template de proposition client · ZIP pré-organisé · support personnel 30 jours
+> Bundle premium inclus : template rapport HTML bilingue · template proposition client · ZIP pré-organisé · support personnel 30 jours
 
 ---
 
@@ -116,8 +122,8 @@ bash install.sh
        ▼
   Orchestrateur — récupère la page d'accueil + 5 pages clés
        │
-       ├──────────────│────────────────────│────────────────│──────────────────│
-       ▼              ▼                    ▼                ▼                  ▼
+       ├──────────────┬──────────────┬──────────────┬──────────────┐
+       ▼              ▼              ▼              ▼              ▼
   market-content  market-conversion  market-technical  market-competitive  market-strategy
   Contenu & Copy   CRO & Tunnels    SEO & Tracking   Intelligence conc.  Marque & Croissance
      25% poids       20% poids       20% poids          15% poids         10% + 10%
@@ -143,7 +149,7 @@ bash install.sh
 
 ## 🆓 Gratuit vs ⭐ Premium
 
-| Fonctionnalité               | GitHub (Gratuit) | Bundle Gumroad (€29) |
+| Fonctionnalité               | GitHub (Gratuit) | Bundle Premium (€29) |
 | ----------------------------- | :--------------: | :-------------------: |
 | 15 commandes slash            |        ✅        |          ✅          |
 | 5 agents IA                   |        ✅        |          ✅          |
@@ -155,7 +161,7 @@ bash install.sh
 | Mises à jour par email       |        ❌        |          ✅          |
 | Support personnel 30 jours    |        ❌        |          ✅          |
 
-**[Obtenir le Bundle Premium sur Gumroad — €29](https://auditmysiteai.gumroad.com/l/audit-my-site)**
+**[⭐ Meilleure offre — Acheter sur Payhip (5% frais)](https://payhip.com/b/FGatd)**  ·  **[Acheter sur Gumroad](https://auditmysiteai.gumroad.com/l/audit-my-site)**
 
 ---
 
@@ -189,7 +195,7 @@ audit-my-site/
 
 ```bash
 # Requis
-npm install -g @anthropic-ai/claude-code   # Claude Code CLI
+npm install -g @anthropic-ai/claude-code
 
 # Optionnel — pour les rapports PDF
 pip install reportlab==4.0.4
@@ -211,15 +217,10 @@ bash uninstall.sh
 
 **MIT** — utilisation commerciale autorisée, modification libre, livraison aux clients sous votre propre marque.
 
-Voir [LICENSE](ai-marketing/LICENSE)
-
 ---
 
 Créé par [Mohssine Mazouz](https://github.com/johssinma) · Bilingue FR/EN · Licence MIT
 
-**[⭐ Star ce repo](https://github.com/johssinma/audit-my-site)**  ·  **[🛒 Bundle Premium — €29](https://auditmysiteai.gumroad.com/l/audit-my-site)**
+**[⭐ Star ce repo](https://github.com/johssinma/audit-my-site)**  ·  **[☕ Ko-fi](https://ko-fi.com/mohssinemazouz)**  ·  **[🛒 Payhip](https://payhip.com/b/FGatd)**  ·  **[🛒 Gumroad](https://auditmysiteai.gumroad.com/l/audit-my-site)**
 
-*Transformez n'importe quel site en opportunité de revenus — en quelques minutes.*`<div align="center">`
-`<img src="https://img.shields.io/badge/Audit_My_Site-Suite_Marketing_IA-0f1117?style=for-the-badge&labelColor=0f1117&color=2d8bff" alt="Audit My Site"/>`
-
-# 🔍 Audit My Site
+*Transformez n'importe quel site en opportunité de revenus — en quelques minutes.*
